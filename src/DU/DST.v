@@ -1,20 +1,13 @@
 module DST (
     input                   [ 0 : 0]            rst_n,  //复位使能低电平有效
-    input                   [ 0 : 0]            clk, //pixel clk,于 800x600@72Hz 的规格，应当选用 50MHz
+    input                   [ 0 : 0]            clk_px, //pixel clk,于 800x600@72Hz 的规格，应当选用 50MHz
 
-    //output      reg         [ 0 : 0]            hen,    //水平显示有效
-    //output      reg         [ 0 : 0]            ven,    //垂直显示有效,传递给 DDP 用于产生坐标
+    output      reg         [ 0 : 0]            hen,    //水平显示有效
+    output      reg         [ 0 : 0]            ven,    //垂直显示有效,传递给 DDP 用于产生坐标
     output      reg         [ 0 : 0]            hs,     //行同步
     output      reg         [ 0 : 0]            vs      //场同步,传递给 VGA 显示器用于同步
 );
-reg [0:0] hen,ven;
-wire clk_px , locked;
-clkchange my(
-    .clk_out1(clk_px),
-    .reset(1'b1),
-    .locked(locked),
-    .clk_in1(clk)
-);
+
 localparam HSW_t    = 119;                              //水平同步信号的宽度，以 clk_px 为单位计算
 localparam HBP_t    = 63;                               //表示从水平同步信号结束开始到一行的有效数据开始之间的 clk_px 个数
 localparam HEN_t    = 799;                              //水平显示有效区域，对应水平像素分辨率
