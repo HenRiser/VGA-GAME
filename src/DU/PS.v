@@ -17,7 +17,7 @@ always @(posedge clk) begin //时钟同步
         neggrab <= grabd;    
 end
 
-assign p = (~grabd)&neggrab; //在下降沿抓捕
+assign p = grabd&(~neggrab); //在上升沿抓捕
 
 
 endmodule
