@@ -12,7 +12,7 @@ module CntS #(
 
 always @(posedge clk) begin
     if (!rst_n)  //复位使能低电平有效，把q置于设定的初始值
-        q <= RST_VLU;
+        q <= 0;
     else if (ce) begin
         if (q == 0)    
             q <= d;

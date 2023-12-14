@@ -2,7 +2,7 @@ module PS#(
         parameter  WIDTH = 1
 )
 (
-        input             s[WIDTH-1:0],
+        input             s,
         input             clk,
         output     wire   p
 );

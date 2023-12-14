@@ -1,4 +1,4 @@
-module Top (
+module Top_DU(
     input                   [ 0 : 0]            rstn,  //复位使能低电平有效
     input                   [ 0 : 0]            CLK100MHZ, //pixel clk,于 800x600@72Hz 的规格，应当选用 50MHz
 
